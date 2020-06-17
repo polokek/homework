@@ -1,82 +1,6 @@
 from abc import ABC, abstractmethod
 import random
 
-
-
-
-# Создание меню
-flag = True
-
-while flag :
-    print ('Главное меню')
-    print ('1) Зашифровка\Расшифровка\n2) Сгенерировать ключ')
-    asd = input ()
-    if asd == '1' :
-        print ('Ваш вабор : 1 ')
-    elif asd == '2' :
-        print ('Ваш вабор : 2')
-    else :
-        print ('Error404')
-    print ('Подменю')
-    if asd == '1' :
-        print('Зашифровка\Расшифровка')
-        print ('1) Зашифровка\n2) Расшифровка')
-        val_1 = input ()
-        
-        if val_1 == '1' :
-            print ('Выберете метод зашифровки\n 1)замены\n 2)перестановки\n 3)гаммирования')
-            val_3 = input ()
-            if val_3 == '1':
-                print ('Ваш выбор - замены')
-                obj=  Replacement ()
-                method= obj.encryption()
-            elif val_3 == '2' :
-                print ('Ваш выбор - перестановки')
-                obj = TRANSPOS()
-                method= obj.encryption()
-            elif val_3 == '3' :
-                print ('Ваш выбор - гаммирования')
-                obj = XOR()
-                method= obj.encryption()
-            else :
-                print ('Error404')
-        elif val_1 == '2' :
-            print ('Выберете метод расшифровки\n 1)замены\n 2)перестановки\n 3)гаммирования')
-            val_3 = input ()
-            if val_3 == '1':
-                print ('Ваш выбор - замены')
-                obj=  Replacement ()
-                method= obj.revers()
-            elif val_3 == '2' :
-                print ('Ваш выбор - перестановки')
-                obj=  TRANSPOS()
-                method= obj.revers()
-            elif val_3 == '3' :
-                print ('Ваш выбор - гаммирования')
-                obj = XOR()
-                method= obj.revers() 
-            else :
-                print ('Error404')
-        else :
-            print ('Error404')
-    elif asd == '2' :
-        print ('Выберете алгоритм шифра')
-        print ('1) Шифр замены\n2) Шифр перестановки')
-        val_2 = input ()
-        if val_2 == '1' :
-            print ('Сгенерировать ключ/шифр замены')
-            obj = XOR()
-            method= obj.gen_key() 
-        elif val_2 == '2' :
-            print ('Сгенерировать ключ/шифр перестановки')
-            obj = TRANSPOS()
-            method= obj.gener_key()
-        else :
-            print ('Error404')
-    else :
-        print ('Error404')
-
-
 class Parent(ABC): 
 
 #Чтение файла my_alfabet
@@ -457,7 +381,72 @@ class XOR(Parent):
         print("Succesfull")
 
 
+# Создание меню
+flag = True
+obj_1=Replacement()
+obj_2=TRANSPOS()
+obj_3=XOR()
+while flag :
+    print ('Главное меню')
+    print ('1) Зашифровка\Расшифровка\n2) Сгенерировать ключ')
+    asd = input ()
+    if asd == '1' :
+        print ('Ваш вабор : 1 ')
+    elif asd == '2' :
+        print ('Ваш вабор : 2')
+    else :
+        print ('Error404')
+    print ('Подменю')
+    if asd == '1' :
+        print('Зашифровка\Расшифровка')
+        print ('1) Зашифровка\n2) Расшифровка')
+        val_1 = input ()
         
+        if val_1 == '1' :
+            print ('Выберете метод зашифровки\n 1)замены\n 2)перестановки\n 3)гаммирования')
+            val_3 = input ()
+            if val_3 == '1':
+                print ('Ваш выбор - замены')
+                method= obj_1.encryption()
+            elif val_3 == '2' :
+                print ('Ваш выбор - перестановки')
+                method= obj_2.encryption()
+            elif val_3 == '3' :
+                print ('Ваш выбор - гаммирования')
+                method= obj_3.encryption()
+            else :
+                print ('Error404')
+        elif val_1 == '2' :
+            print ('Выберете метод расшифровки\n 1)замены\n 2)перестановки\n 3)гаммирования')
+            val_3 = input ()
+            if val_3 == '1':
+                print ('Ваш выбор - замены')
+                method= obj_1.revers()
+            elif val_3 == '2' :
+                print ('Ваш выбор - перестановки')
+                method= obj_2.revers()
+            elif val_3 == '3' :
+                print ('Ваш выбор - гаммирования')
+                method= obj_3.revers() 
+            else :
+                print ('Error404')
+        else :
+            print ('Error404')
+    elif asd == '2' :
+        print ('Выберете алгоритм шифра')
+        print ('1) Шифр замены\n2) Шифр перестановки')
+        val_2 = input ()
+        if val_2 == '1' :
+            print ('Сгенерировать ключ/шифр замены')
+            method= obj_1.gen_key() 
+        elif val_2 == '2' :
+            print ('Сгенерировать ключ/шифр перестановки')
+            method= obj_2.gener_key()
+        else :
+            print ('Error404')
+    else :
+        print ('Error404')
+    
 
    
         
